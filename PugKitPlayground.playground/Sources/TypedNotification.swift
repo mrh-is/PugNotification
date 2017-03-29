@@ -15,6 +15,11 @@ class ObserverToken {
     fileprivate init(observer: NSObjectProtocol) {
         self.observer = observer
     }
+	
+	// remove the observer when deinit called.
+	deinit {
+		NotificationCenter.default.removeObserver(observer)
+	}
 }
 
 extension TypedNotification {
